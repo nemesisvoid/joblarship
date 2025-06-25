@@ -1,0 +1,142 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'motion/react';
+import { X, Menu, ChevronDownIcon } from 'lucide-react';
+import Logo from '../logo';
+
+const MobileNav = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
+  const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+
+  const handleIsDropdownOpen1 = () => {
+    setIsDropdownOpen1(prev => !prev);
+    setIsDropdownOpen2(false); // Close the second dropdown when the first is opened
+  };
+
+  const handleIsDropdownOpen2 = () => {
+    setIsDropdownOpen2(prev => !prev);
+    setIsDropdownOpen1(false); // Close the first dropdown when the second is opened
+  };
+
+  const handleMobileNavOpen = () => {
+    setIsMobileMenuOpen(prev => !prev);
+  };
+
+  return (
+    <>
+      <button
+        className='md:hidden text-lg z-30'
+        onClick={handleMobileNavOpen}>
+        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          exit={{ y: -100 }}
+          transition={{ type: 'keyframes', duration: 0.3 }}
+          className='fixed top-0 left-0 w-full h-full bg-white shadow-lg z-20 md:hidden border-none'>
+          <div className=''>
+            <div className='mb-10 translate-y-4 translate-x-4 '>
+              <Logo />
+            </div>
+            <ul className='flex flex-col grow gap-4 py-24 mt-10'>
+              <li className='text-xl px-6 py-3'>
+                <Link href='/'>Home</Link>
+              </li>
+
+              {/* Mobile dropdown 1 */}
+
+              <li className={`'flex flex-col gap-2 py-3 ${isDropdownOpen1 ? 'bg-gray-100' : ''}`}>
+                <div
+                  className='text-xl relative flex items-center justify-between cursor-pointer px-6'
+                  onClick={handleIsDropdownOpen1}>
+                  Careers
+                  <ChevronDownIcon className={`${isDropdownOpen1 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
+                </div>
+
+                <div className={`${isDropdownOpen1 ? 'block' : 'hidden'} flex flex-col gap-3 w-full mb-10 bg-gray-100 px-7 rounded-xs`}>
+                  <div className='mt-4'>
+                    <Link
+                      href='/careers/academics'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
+                      Academic
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link
+                      href='/careers/industry'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
+                      Industry
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link
+                      href='/careers/others'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1  w-full'>
+                      Others
+                    </Link>
+                  </div>
+                </div>
+              </li>
+
+              {/* Mobile dropdown 1 */}
+
+              <li className={`'flex flex-col gap-2 py-3 ${isDropdownOpen2 ? 'bg-gray-100' : ''}`}>
+                <div
+                  className='text-xl relative flex items-center justify-between cursor-pointer px-6'
+                  onClick={handleIsDropdownOpen2}>
+                  Scholarships
+                  <ChevronDownIcon className={`${isDropdownOpen2 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
+                </div>
+
+                <div className={`${isDropdownOpen2 ? 'block' : 'hidden'} flex flex-col gap-3 w-full mb-10 bg-gray-100 px-7 rounded-xs`}>
+                  <div className='mt-4'>
+                    <Link
+                      href='/scholarships/undergraduate'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
+                      Undergraduate
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link
+                      href='/scholarships/masters'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
+                      Masters
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link
+                      href='/scholarships/phd'
+                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1  w-full'>
+                      PhD
+                    </Link>
+                  </div>
+                </div>
+              </li>
+
+              <li className='text-xl px-6 py-3'>
+                <Link href='/fellowships'>Fellowship</Link>
+              </li>
+
+              <li className='text-xl px-6 py-3'>
+                <Link href='/grants'>Grants</Link>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+      )}
+    </>
+  );
+};
+
+export default MobileNav;
