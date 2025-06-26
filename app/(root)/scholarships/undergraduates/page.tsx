@@ -7,11 +7,11 @@ import React from 'react';
 const UndergraduatesPage = () => {
   return (
     <section className='bg-gray-50'>
-      <div className='bg-section bg-[url(/hero-img.jpg)] w-full  md:h-[80vh] lg:h-[70vh]'>
+      <div className='relative bg-[url(/hero-img.jpg)] bg-cover bg-center bg-no-repeat h-[80vh] w-full mb-10'>
         <div className='bg-overlay' />
         <PageHeader>
           <h1 className='text-white text-3xl md:text-5xl text-center font-medium leading-snug z-10 w-full lg:w-[55%]'>
-            Access Grants That Support Innovation, Education, and Social Impact
+            Find the Best Undergraduate Scholarships to Start Strong and Graduate Debt-Free
           </h1>
           <SearchForm />
         </PageHeader>

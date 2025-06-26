@@ -39,7 +39,8 @@ export const opportunities: OpportunityType[] = [
     subCategory: 'Academic',
     location: 'United States',
     deadline: 'August 15, 2025',
-    description: 'Offer grants for graduate students, young professionals and artist to study in the United States',
+    description:
+      'The Brian Maxwell Memorial Scholarship is awarded each year to six student-athletes that will be continuing their post-secondary education at a Canadian College or University. Three males and three females.',
     fundingType: 'Fully Funded',
   },
   {
