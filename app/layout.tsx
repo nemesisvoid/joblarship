@@ -24,8 +24,6 @@ export const openSans = Open_Sans({
   variable: '--font-open-sans',
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  preload: true,
 });
 
 export default function RootLayout({
