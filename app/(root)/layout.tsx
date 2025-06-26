@@ -2,7 +2,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/sections/footer';
 import React from 'react';
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Navbar />
@@ -10,6 +10,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <Footer />
     </div>
   );
-};
-
-export default RootLayout;
+}
