@@ -17,16 +17,16 @@ export const academicDropdownLinks = [
 ];
 export const scholarshipDropdownLinks = [
   {
-    name: 'Undergraduate',
-    link: '/scholarship/undergraduate',
+    name: 'Undergraduates',
+    link: '/scholarships/undergraduates',
   },
   {
     name: 'Masters',
-    link: '/scholarship/masters',
+    link: '/scholarships/masters',
   },
   {
     name: 'PhD',
-    link: '/scholarship/phd',
+    link: '/scholarships/phds',
   },
 ];
 

@@ -12,7 +12,7 @@ const CareerCard = ({ data }: { data: OpportunityType }) => {
 
         <CardTitle className='text-gray-400 text-lg my-2'>First Bank</CardTitle>
 
-        <div className='flex items-center gap-4 mb-1'>
+        <div className='flex items-center flex-wrap gap-4 mb-1'>
           <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
             <span>Lagos</span>
           </div>

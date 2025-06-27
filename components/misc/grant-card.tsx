@@ -12,7 +12,7 @@ const GrantCard = ({ data }: { data: OpportunityType }) => {
 
         <CardTitle className='text-gray-400 font-medium my-2'>Global Plastic Action Partnership (GPAP)</CardTitle>
 
-        <div className='flex items-center gap-4 mb-1'>
+        <div className='flex items-center flex-wrap gap-4 mb-1'>
           <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
             <span>For: NGOs</span>
           </div>

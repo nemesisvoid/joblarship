@@ -8,7 +8,7 @@ export const metadata = {
 const MastersPage = () => {
   return (
     <section className='bg-gray-50'>
-      <div className='relative bg-[url(/hero-img.jpg)] bg-cover bg-center bg-no-repeat h-[70vh] w-full mb-10'>
+      <div className='bg-section bg-[url(/hero-img.jpg)]'>
         <SearchForm />
       </div>
 

@@ -12,7 +12,7 @@ const FellowshipsPage = () => {
     <section className='bg-gray-50'>
       <div className='bg-section bg-[url(/hero-img.jpg)]'>
         <PageHeader>
-          <h1></h1>
+          <h1>Discover Prestigious Fellowships to Grow Professionally and Academically</h1>
           <SearchForm />
         </PageHeader>
       </div>

@@ -51,7 +51,7 @@
 }
 
 @theme {
-  --color-primary-100: orange;
+  --color-primary-100: rgba(243, 153, 32, 1);
   --color-primary-accent: '';
 }
 
@@ -61,7 +61,7 @@
   }
 
   .bg-section {
-    @apply relative bg-cover bg-center bg-no-repeat  md:h-[80vh] lg:h-[70vh] w-full mb-10;
+    @apply relative bg-cover bg-center bg-no-repeat  h-[80vh] w-full mb-10;
   }
 
   .center {

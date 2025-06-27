@@ -5,12 +5,21 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { X, Menu, ChevronDownIcon } from 'lucide-react';
 import Logo from '../logo';
+import { academicDropdownLinks, scholarshipDropdownLinks } from '@/constants';
+import { usePathname } from 'next/navigation';
 
 const MobileNav = () => {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
   const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+
+  const handleNavClose = () => {
+    setIsMobileMenuOpen(false);
+    setIsDropdownOpen1(false);
+    setIsDropdownOpen2(false);
+  };
 
   const handleIsDropdownOpen1 = () => {
     setIsDropdownOpen1(prev => !prev);
@@ -46,7 +55,9 @@ const MobileNav = () => {
               <Logo />
             </div>
             <ul className='flex flex-col grow gap-4 py-24 mt-10'>
-              <li className='text-xl px-6 py-3'>
+              <li
+                className='text-xl px-6 py-3'
+                onClick={handleNavClose}>
                 <Link href='/'>Home</Link>
               </li>
 
@@ -62,34 +73,27 @@ const MobileNav = () => {
 
                 <div className={`${isDropdownOpen1 ? 'block' : 'hidden'} flex flex-col gap-3 w-full mb-10 bg-gray-100 px-7 rounded-xs`}>
                   <div className='mt-4'>
-                    <Link
-                      href='/careers/academics'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
-                      Academic
-                    </Link>
-                  </div>
-
-                  <div>
-                    <Link
-                      href='/careers/industry'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
-                      Industry
-                    </Link>
-                  </div>
-
-                  <div>
-                    <Link
-                      href='/careers/others'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1  w-full'>
-                      Others
-                    </Link>
+                    {academicDropdownLinks.map((item, i) => (
+                      <Link
+                        href={item.link}
+                        className={`text-lg  text-black hover:bg-orange-200 inline-block hover:text-primary-100 p-2 w-full  ${
+                          pathname === item.link ? 'text-orange-400' : ''
+                        }`}
+                        key={i}
+                        onClick={handleNavClose}>
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </li>
 
-              {/* Mobile dropdown 1 */}
+              {/* Mobile dropdown 2 */}
 
-              <li className={`'flex flex-col gap-2 py-3 ${isDropdownOpen2 ? 'bg-gray-100' : ''}`}>
+              <li
+                className={`'flex flex-col gap-2 py-3 ${isDropdownOpen2 ? 'bg-gray-100' : ''}  ${
+                  scholarshipDropdownLinks.some(link => link.link === pathname) ? 'text-orange-400' : ''
+                } `}>
                 <div
                   className='text-xl relative flex items-center justify-between cursor-pointer px-6'
                   onClick={handleIsDropdownOpen2}>
@@ -99,36 +103,30 @@ const MobileNav = () => {
 
                 <div className={`${isDropdownOpen2 ? 'block' : 'hidden'} flex flex-col gap-3 w-full mb-10 bg-gray-100 px-7 rounded-xs`}>
                   <div className='mt-4'>
-                    <Link
-                      href='/scholarships/undergraduate'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
-                      Undergraduate
-                    </Link>
-                  </div>
-
-                  <div>
-                    <Link
-                      href='/scholarships/masters'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1 w-full'>
-                      Masters
-                    </Link>
-                  </div>
-
-                  <div>
-                    <Link
-                      href='/scholarships/phd'
-                      className='text-lg hover:bg-orange-200 inline-block hover:text-primary-100 p-1  w-full'>
-                      PhD
-                    </Link>
+                    {scholarshipDropdownLinks.map((item, i) => (
+                      <Link
+                        href={item.link}
+                        className={`text-lg  text-black hover:bg-orange-200 inline-block hover:text-primary-100 p-2 w-full  ${
+                          pathname === item.link ? 'text-orange-400' : ''
+                        }`}
+                        key={i}
+                        onClick={handleNavClose}>
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </li>
 
-              <li className='text-xl px-6 py-3'>
+              <li
+                className='text-xl px-6 py-3'
+                onClick={handleNavClose}>
                 <Link href='/fellowships'>Fellowship</Link>
               </li>
 
-              <li className='text-xl px-6 py-3'>
+              <li
+                className='text-xl px-6 py-3'
+                onClick={handleNavClose}>
                 <Link href='/grants'>Grants</Link>
               </li>
             </ul>

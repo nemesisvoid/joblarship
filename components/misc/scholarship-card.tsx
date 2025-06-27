@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 const ScholarshipCard = ({ data }: { data: OpportunityType }) => {
   return (
-    <div className='bg-white w-full flex gap-6 p-7 shadow-md rounded-md'>
+    <div className='bg-white w-full flex flex-col md:flex-row  gap-6 p-7 shadow-md rounded-md'>
       {data.image && (
-        <div className='relative aspect-square w-1/3 shrink-0'>
+        <div className='relative aspect-square md:w-1/3 shrink-0'>
           <Image
             src={data.image}
             alt=''
@@ -26,9 +26,9 @@ const ScholarshipCard = ({ data }: { data: OpportunityType }) => {
           <p className='bg-green-100 text-green-500 px-4 py-1 rounded-xs'>{data.fundingType}</p>
         </div>
 
-        <p className='text-lg leading-loose'>{data.description}</p>
+        <p className='text-lg leading-loose mb-10 md:mb-2'>{data.description}</p>
 
-        <div className='self-end mt-auto w-1/3'>
+        <div className='md:self-end mt-auto w-1/3'>
           <Button
             asChild
             className='text-xl text-white bg-primary-100 w-full py-6 hover:bg-primary-100/70'>
