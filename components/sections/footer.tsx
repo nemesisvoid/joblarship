@@ -3,8 +3,8 @@ import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
-    <footer className='bg-stone-900 py-10'>
-      <div className='container flex items-center justify-between'>
+    <footer className='bg-stone-900 py-10 mt-20'>
+      <div className='container flex flex-col md:flex-row items-center justify-between'>
         <p className='text-white text-lg'>&copy; Joblarship {new Date().getFullYear()}. All rights reserved.</p>
         <div className='flex items-center gap-4'>
           <div>

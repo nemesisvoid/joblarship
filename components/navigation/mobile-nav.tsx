@@ -35,6 +35,8 @@ const MobileNav = () => {
     setIsMobileMenuOpen(prev => !prev);
   };
 
+  console.log(pathname);
+
   return (
     <>
       <button
@@ -58,7 +60,11 @@ const MobileNav = () => {
               <li
                 className='text-xl px-6 py-3'
                 onClick={handleNavClose}>
-                <Link href='/'>Home</Link>
+                <Link
+                  href='/'
+                  className={`${pathname === '/' ? 'text-primary-100' : ''}`}>
+                  Home
+                </Link>
               </li>
 
               {/* Mobile dropdown 1 */}
@@ -121,13 +127,21 @@ const MobileNav = () => {
               <li
                 className='text-xl px-6 py-3'
                 onClick={handleNavClose}>
-                <Link href='/fellowships'>Fellowship</Link>
+                <Link
+                  href='/fellowships'
+                  className={`${pathname === '/fellowships' ? 'text-primary-100' : ''}`}>
+                  Fellowship
+                </Link>
               </li>
 
               <li
                 className='text-xl px-6 py-3'
                 onClick={handleNavClose}>
-                <Link href='/grants'>Grants</Link>
+                <Link
+                  href='/grants'
+                  className={`${pathname === '/grants' ? 'text-primary-100' : ''}`}>
+                  Grants
+                </Link>
               </li>
             </ul>
           </div>

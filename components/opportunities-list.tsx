@@ -26,7 +26,7 @@ const OpportunitiesList = ({ data, title, limit = 6, layoutType = 'grid', listTy
         <h2 className='text-4xl font-medium mb-12'>{title}</h2>
       </div>
 
-      <div className={`${layoutType === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' : 'flex flex-col gap-8'}`}>
+      <div className={`${layoutType === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex flex-col gap-8'}`}>
         {!listType &&
           slicedData.map((item, i) => (
             <OpportunityCard

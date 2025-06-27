@@ -17,7 +17,7 @@ const HomePageList = ({ data, title, limit = 4 }: HomePageListProps) => {
     );
   return (
     <div>
-      <h2 className='section-header'>{title}</h2>
+      <h2 className='text-3xl font-medium mb-12'>{title}</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
         {slicedData.map((item, i) => (
           <HomePageListCard
@@ -28,7 +28,7 @@ const HomePageList = ({ data, title, limit = 4 }: HomePageListProps) => {
       </div>
 
       <div className='flex items-center justify-center'>
-        <Button className='text-lg bg-white text-black py-7 w-full md:w-1/2 sm:w-1/3 mt-10 rounded-md border border-gray-600 hover:text-white hover:bg-black duration-300 cursor-pointer'>
+        <Button className='text-lg bg-white text-black py-7 w-full md:w-1/3 mt-10 rounded-md border border-gray-600 hover:text-white hover:bg-black duration-300 cursor-pointer'>
           Load More
         </Button>
       </div>
