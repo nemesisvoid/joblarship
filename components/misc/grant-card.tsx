@@ -3,12 +3,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { OpportunityType } from '@/types';
+import { Opportunities } from '@/sanity/types';
 
-const GrantCard = ({ data }: { data: OpportunityType }) => {
+const GrantCard = ({ data }: { data: Opportunities }) => {
+  console.log(data);
   return (
     <Card className='w-full px-3'>
       <CardHeader>
-        <CardTitle className='text-2xl md:text-3xl'>Green Foreign Fellowship</CardTitle>
+        <CardTitle className='text-2xl md:text-3xl'>{data.title}</CardTitle>
 
         <CardTitle className='text-gray-400 font-medium my-2'>Global Plastic Action Partnership (GPAP)</CardTitle>
 
@@ -34,7 +36,7 @@ const GrantCard = ({ data }: { data: OpportunityType }) => {
           asChild
           className='bg-primary-100 text-white text-lg py-6 px-6 w-full md:w-[15%]
            rounded-md hover:bg-primary-100/70 transition-colors duration-300'>
-          <Link href={`/details${data.slug}`}>Apply</Link>
+          <Link href={`/details/${data.slug?.current}`}>Apply</Link>
         </Button>
       </CardFooter>
     </Card>

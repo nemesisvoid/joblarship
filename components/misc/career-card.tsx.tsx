@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { OpportunityType } from '@/types';
+import { Opportunities } from '@/sanity/types';
 
-const CareerCard = ({ data }: { data: OpportunityType }) => {
+const CareerCard = ({ data }: { data: Opportunities }) => {
   return (
     <Card className='w-full px-3'>
       <CardHeader>

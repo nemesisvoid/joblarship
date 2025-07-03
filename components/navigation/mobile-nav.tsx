@@ -35,8 +35,6 @@ const MobileNav = () => {
     setIsMobileMenuOpen(prev => !prev);
   };
 
-  console.log(pathname);
-
   return (
     <>
       <button

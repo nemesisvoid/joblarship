@@ -1,72 +1,167 @@
-import { OpportunityType } from '@/types';
+'use client';
 import OpportunityCard from './opportunity-card';
 import GrantCard from './misc/grant-card';
 import CareerCard from './/misc/career-card.tsx';
 import ScholarshipCard from './misc/scholarship-card';
 import FellowshipCard from './misc/fellowship-card';
+import Pagination from './misc/pagination';
+import { useEffect, useState } from 'react';
+import { Opportunities } from '@/sanity/types';
+import { fetchPaginatedOpportunities } from '@/sanity/lib/queries';
+import { LoaderIcon } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface OpportunitiesListProps {
-  data: OpportunityType[];
-  title: string;
   limit: number;
+  title: string;
+  filterButton?: boolean;
+  educationLevel: 'undergraduate' | 'masters' | 'phd';
+  careerLevel: 'academic' | 'industry' | 'others';
   layoutType?: 'grid' | 'flex';
   listType?: 'career' | 'scholarship' | 'fellowship' | 'academic' | 'grant';
 }
-const OpportunitiesList = ({ data, title, limit = 6, layoutType = 'grid', listType }: OpportunitiesListProps) => {
-  const slicedData = data.slice(0, limit);
-  if (!slicedData || slicedData.length === 0)
-    return (
-      <div className='flex items-center justify-center h-64'>
-        <p>Data not available</p>
-      </div>
-    );
+
+const PAGE_SIZE = 2;
+
+const OpportunitiesList = ({ title, layoutType = 'grid', listType }: OpportunitiesListProps) => {
+  const [activePage, setActivePage] = useState(1);
+  const [data, setData] = useState<Opportunities[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [activeFilter, setActiveFilter] = useState(listType || '');
+
+  const [isPageLoading, setIsPageLoading] = useState(true);
+
+  console.log('active', activeFilter);
+
+  useEffect(() => {
+    const getData = async () => {
+      setIsPageLoading(true);
+      const items = await fetchPaginatedOpportunities(activePage, PAGE_SIZE, activeFilter);
+      setData(items.opportunities);
+      console.log('items', items);
+      const total = items.totalCount;
+      setTotalPages(Math.ceil(total / PAGE_SIZE));
+      setIsPageLoading(false);
+    };
+    getData();
+  }, [activePage, listType, activeFilter]);
+
+  useEffect(() => {
+    setActiveFilter(listType || '');
+  }, [listType]);
+
+  const handleFilterChange = (filterValue: string) => {
+    if (activeFilter !== filterValue) {
+      setActiveFilter(filterValue);
+      setActivePage(1);
+    }
+  };
+
+  const setFilterButtonClassName = (filterValue: string) => `
+    text-lg text-gray-700 p-6 rounded-4xl bg-white border border-black
+    hover:bg-green-500 hover:text-white cursor-pointer
+    ${activeFilter === filterValue ? 'bg-green-700 text-white border-none' : ''}
+  `;
+
   return (
-    <div>
-      <div className='flex items-center justify-between'>
+    <div className='relative'>
+      <div className='flex flex-col lg:flex-row lg:items-center justify-between mb-10'>
         <h2 className='text-4xl font-medium mb-12'>{title}</h2>
+
+        <div className='flex items-center flex-wrap gap-5 self-start'>
+          <Button
+            className={setFilterButtonClassName('')}
+            onClick={() => handleFilterChange('')}>
+            All
+          </Button>
+
+          <Button
+            className={setFilterButtonClassName('career')}
+            onClick={() => handleFilterChange('career')}>
+            Jobs
+          </Button>
+
+          <Button
+            className={setFilterButtonClassName('scholarship')}
+            onClick={() => handleFilterChange('scholarship')}>
+            Scholarships
+          </Button>
+
+          <Button
+            className={setFilterButtonClassName('fellowship')}
+            onClick={() => handleFilterChange('fellowship')}>
+            Fellowship
+          </Button>
+          <Button
+            className={setFilterButtonClassName('grant')}
+            onClick={() => handleFilterChange('grant')}>
+            Grants
+          </Button>
+        </div>
       </div>
 
-      <div className={`${layoutType === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex flex-col gap-8'}`}>
-        {!listType &&
-          slicedData.map((item, i) => (
-            <OpportunityCard
-              data={item}
-              key={i}
-            />
-          ))}
+      {isPageLoading ? (
+        <div className='h-40 flex items-center justify-center my-20'>
+          <LoaderIcon
+            className='animate-spin text-orange-500'
+            size={40}
+          />
+        </div>
+      ) : !data || data.length === 0 ? (
+        <div className='text-gray-800 text-lg h-20 flex items-center justify-center'>
+          No opportunities available at the moment. Please check back later
+        </div>
+      ) : (
+        <div className={`${layoutType === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex flex-col gap-8'}`}>
+          {!listType &&
+            data.map((item, i) => (
+              <OpportunityCard
+                data={item}
+                key={i}
+              />
+            ))}
 
-        {listType === 'grant' &&
-          slicedData.map((item, i) => (
-            <GrantCard
-              data={item}
-              key={i}
-            />
-          ))}
+          {listType === 'grant' &&
+            data.map((item, i) => (
+              <GrantCard
+                data={item}
+                key={i}
+              />
+            ))}
 
-        {listType === 'academic' &&
-          slicedData.map((item, i) => (
-            <CareerCard
-              data={item}
-              key={i}
-            />
-          ))}
+          {listType === 'academic' &&
+            data.map((item, i) => (
+              <CareerCard
+                data={item}
+                key={i}
+              />
+            ))}
 
-        {listType === 'fellowship' &&
-          slicedData.map((item, i) => (
-            <FellowshipCard
-              data={item}
-              key={i}
-            />
-          ))}
+          {listType === 'fellowship' &&
+            data.map((item, i) => (
+              <FellowshipCard
+                data={item}
+                key={i}
+              />
+            ))}
 
-        {listType === 'scholarship' &&
-          slicedData.map((item, i) => (
-            <ScholarshipCard
-              data={item}
-              key={i}
-            />
-          ))}
-      </div>
+          {listType === 'scholarship' &&
+            data.map((item, i) => (
+              <ScholarshipCard
+                data={item}
+                key={i}
+              />
+            ))}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <Pagination
+          activePage={activePage}
+          totalPages={totalPages}
+          onPageChange={page => setActivePage(page)}
+        />
+      )}
     </div>
   );
 };

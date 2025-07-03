@@ -6,10 +6,17 @@ export const opportunities = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'opportunity',
-      title: 'Opportunity',
+      name: 'title',
+      title: 'Opportunity Title',
       type: 'text',
       description: 'The title of the opportunity',
+    }),
+    defineField({
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
     }),
     defineField({
       name: 'type',
@@ -23,16 +30,7 @@ export const opportunities = defineType({
           { title: 'Career', value: 'career' },
           { title: 'Other', value: 'other' },
         ],
-        layout: 'dropdown',
       },
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      description: 'The description of the opportunity',
-      type: 'text',
-      hidden: ({ parent }) => parent.type,
       validation: Rule => Rule.required(),
     }),
     defineField({
@@ -48,6 +46,7 @@ export const opportunities = defineType({
       },
       hidden: ({ parent }) => parent.type !== 'career',
     }),
+
     defineField({
       name: 'educationLevel',
       title: 'Education Level',
@@ -59,7 +58,33 @@ export const opportunities = defineType({
           { title: 'Phd', value: 'phd' },
         ],
       },
+
       hidden: ({ parent }) => parent.type !== 'scholarship',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context?.parent as { type?: string })?.type;
+          if (type === 'scholarship' && !value) {
+            return 'Education level is required for scholarships.';
+          }
+          return true;
+        }),
+    }),
+
+    defineField({
+      name: 'shortdesc',
+      title: 'Short Description',
+      description: 'A short description of the opportunity',
+      type: 'text',
+      hidden: ({ parent }) => parent.type,
+      validation: Rule => Rule.required(),
+    }),
+
+    defineField({
+      name: 'description',
+      title: 'Description',
+      description: 'The description of the opportunity',
+      type: 'text',
+      hidden: ({ parent }) => parent.type,
       validation: Rule => Rule.required(),
     }),
 
@@ -69,21 +94,109 @@ export const opportunities = defineType({
       placeholder: '(eg: fully funded, 250,000 - 500,000)',
       description: 'Type of funds',
       type: 'string',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = context?.parent?.type;
+          if (type === 'scholarship' && !value) {
+            return 'Funding type is required for scholarships';
+          }
+          return true;
+        }),
+      hidden: ({ parent }) => parent.type !== 'scholarship',
     }),
+
+    defineField({
+      name: 'salary',
+      title: 'Salary Range',
+      placeholder: '350,000 - 500,000',
+      type: 'string',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = context?.parent?.type;
+          if (type === 'academic' && !value) {
+            return 'Salary range is required for academic jobs.';
+          }
+          return true;
+        }),
+      hidden: ({ parent }) => parent.type !== 'career',
+    }),
+
     defineField({
       name: 'location',
       title: 'Location',
       placeholder: 'Harvard, University',
       description: 'Location of opportunity',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'country',
       title: 'Country',
       placeholder: 'Nigeria, France, UK',
       description: 'Country of opportunity',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
+
+    defineField({
+      name: 'qualification',
+      title: 'Qualifications Required',
+      description: 'List of minimum qualifications required',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+
+    defineField({
+      name: 'field',
+      title: 'Required Fields of study',
+      description: 'List of required fields',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: ({ parent }) => parent.type === 'career',
+    }),
+
+    defineField({
+      name: 'requirement',
+      title: 'Job Requirements',
+      description: 'List of requirements',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: ({ parent }) => parent.type !== 'career',
+    }),
+
+    defineField({
+      name: 'eligibility',
+      title: 'Eligibility',
+      description: 'Eligibility requirements',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: ({ parent }) => parent.type === 'career',
+    }),
+
+    defineField({
+      name: 'experience',
+      title: 'Job Experience',
+      type: 'string',
+      placeholder: '3 - 4 years of experience',
+      hidden: ({ parent }) => parent.type !== 'career',
+    }),
+
+    defineField({
+      name: 'skills',
+      title: 'Required skills',
+      type: 'array',
+      of: [{ type: 'string' }],
+      hidden: ({ parent }) => parent.type !== 'career',
+    }),
+
+    defineField({
+      name: 'deadline',
+      title: 'Application Deadline',
+      description: 'Deadline for applications',
+      type: 'datetime',
+    }),
+
     defineField({
       name: 'fellowshipType',
       title: 'Fellowship Type',
@@ -97,12 +210,37 @@ export const opportunities = defineType({
         ],
       },
       hidden: ({ parent }) => parent.type !== 'fellowship',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = context?.parent?.type;
+          if (type === 'fellowship' && !value) {
+            return 'Fellowship type is required for fellowships.';
+          }
+          return true;
+        }),
+    }),
+
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
       validation: Rule => Rule.required(),
+    }),
+
+    defineField({
+      name: 'applicationLink',
+      title: 'Application Link',
+      description: 'Link to application form',
+      type: 'url',
+      validation: Rule => Rule.uri({ scheme: ['http', 'https'] }).required(),
     }),
   ],
   preview: {
     select: {
-      title: 'opportunity',
+      title: 'title',
     },
   },
 });

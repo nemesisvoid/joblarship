@@ -16,6 +16,7 @@ const UndergraduatesPage = () => {
       </div>
 
       <div className='container py-10'>
+        {/* <h2 className='text-4xl font-medium mb-12'>Undergraduates Opportunities</h2> */}
         <OpportunitiesList
           title='Undergraduate Scholarships'
           limit={8}

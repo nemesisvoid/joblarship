@@ -1,6 +1,21 @@
 import Image1 from '@/public/img-1.jpg';
 import Image2 from '@/public/img-2.jpg';
 import { Opportunity, OpportunityType } from '@/types';
+
+export const opportunityType = [
+  {
+    name: 'Career',
+  },
+  {
+    name: 'Scholarship',
+  },
+  {
+    name: 'Grant',
+  },
+  {
+    name: 'Fellowship',
+  },
+];
 export const academicDropdownLinks = [
   {
     name: 'Academics',
@@ -34,7 +49,7 @@ export const opportunities: OpportunityType[] = [
   {
     type: Opportunity.Scholarship,
     title: 'Knight Henessy Scholars Program',
-    slug: 'knight-hennessy-scholars-program',
+    slug: 'account-officer',
     image: Image1.src,
     subCategory: 'Academic',
     location: 'United States',
@@ -46,7 +61,7 @@ export const opportunities: OpportunityType[] = [
   {
     type: Opportunity.Scholarship,
     title: 'Knight Henessy Scholars Program',
-    slug: 'knight-hennessy-scholars-program',
+    slug: 'account-officer',
     image: Image1.src,
     subCategory: 'Academic',
     location: 'United States',

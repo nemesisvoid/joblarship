@@ -63,6 +63,9 @@
   .bg-section {
     @apply relative bg-cover bg-center bg-no-repeat  h-[80vh] w-full mb-10;
   }
+  .bg-section-1 {
+    @apply relative bg-cover bg-center bg-no-repeat  h-[60vh] w-full mb-10;
+  }
 
   .center {
     @apply absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10;

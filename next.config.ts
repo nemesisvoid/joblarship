@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io', // Sanity's image CDN
+        pathname: '/images/**', // allow all project images
+      },
+    ],
+  },
 };
 
 export default nextConfig;

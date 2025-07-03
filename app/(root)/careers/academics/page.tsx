@@ -16,7 +16,6 @@ const AcademicsPage = () => {
           <h1 className='text-white text-3xl md:text-5xl text-center font-medium leading-snug z-10 w-full lg:w-[65%]'>
             Browse Academic Job Openings Across Universities and Research Institutions
           </h1>
-          <SearchForm />
         </PageHeader>
       </div>
 

@@ -24,7 +24,7 @@ export type OpportunityType = {
   jobDomain?: JobDomain;
   educationLevel?: EducationLevel;
   targetGroup?: 'Individuals' | 'Organizations';
-  image?: string;
+  image: string;
   location: string;
   deadline?: string;
   description: string;
