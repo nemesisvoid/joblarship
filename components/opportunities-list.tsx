@@ -66,7 +66,7 @@ const OpportunitiesList = ({ title, layoutType = 'grid', listType }: Opportuniti
   return (
     <div className='relative'>
       <div className='flex flex-col lg:flex-row lg:items-center justify-between mb-10'>
-        <h2 className='text-4xl font-medium mb-12'>{title}</h2>
+        <h2 className='text-2xl md:text-4xl font-medium mb-12'>{title}</h2>
 
         <div className='flex items-center flex-wrap gap-5 self-start'>
           <Button
