@@ -4,6 +4,7 @@ import React from 'react';
 import { useSearchStore } from '@/store';
 import OpportunityCard from './opportunity-card';
 import Loader from './misc/loader';
+import { X } from 'lucide-react';
 
 const SearchList = () => {
   const { results, country, opportunity, isLoading, clearFilters } = useSearchStore();
@@ -14,8 +15,15 @@ const SearchList = () => {
 
   if (opportunity && country && (!results || results.length === 0))
     return (
-      <div className='container my-20'>
+      <div className='container flex justify-between items-center my-20'>
         <p className='text-2xl'>No filters matches this search</p>
+
+        <button
+          onClick={clearFilters}
+          className='self-center flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
+          <span>Clear Filters</span>
+          <X className='w-4 h-4' />
+        </button>
       </div>
     );
 
@@ -30,7 +38,12 @@ const SearchList = () => {
           <p className='text-lg text-gray-600'>{results && `Found ${results.length} results`}</p>
         </div>
 
-        <button onClick={clearFilters}>Clear filter X</button>
+        <button
+          onClick={clearFilters}
+          className='self-center flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
+          <span>Clear Filters</span>
+          <X className='w-4 h-4' />
+        </button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3'>
         <OpportunityCard data={results[0]} />
