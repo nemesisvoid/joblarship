@@ -1,5 +1,5 @@
 'use client';
-import { AlertCircleIcon, CheckCircleIcon, MailIcon, MapPinIcon, PhoneIcon, SendIcon } from 'lucide-react';
+import { AlertCircleIcon, CheckCircleIcon, MailIcon, SendIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { Input } from '../ui/input';
 import { BsFacebook, BsInstagram, BsTwitterX } from 'react-icons/bs';
