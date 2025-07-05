@@ -7,6 +7,7 @@ import Details from './details';
 const DetailsPage = async (props: { params: Promise<{ slug: string }> }) => {
   const { slug } = await props.params;
   const data: Opportunities = await client.fetch(getOpportunityBySlug, { slug });
+  console.log(data);
 
   return (
     <section className='bg-gray-50 py-4'>

@@ -49,35 +49,37 @@ const Details = ({ data }: { data: Opportunities }) => {
 
       <div className='flex flex-col lg:flex-row justify-between gap-20'>
         <div className='w-full md:w-[85%]'>
-          <h3 className='capitalize text-2xl font-medium mb-4'>{data.type} Details and Requirements</h3>
+          <h3 className='capitalize text-2xl font-medium mb-3'>{data.type} Details and Requirements</h3>
 
-          <p className='text-lg leading-loose lg:text-justify'>{data.description}</p>
+          <p className='text-lg leading-loose lg:text-justify mb-6'>{data.description}</p>
 
-          {data.eligibility && (
-            <>
-              <p className='text-xl font-medium mb-4'>Eligibility</p>
-              <ul>
-                {data.eligibility.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </>
-          )}
+          <div className='flex flex-col gap-4'>
+            {data.eligibility && (
+              <>
+                <p className='text-xl font-medium mb-1'>Eligibility</p>
+                <ul>
+                  {data.eligibility.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </>
+            )}
 
-          {data.requirement && (
-            <>
-              <p className='text-xl font-medium mb-4'>Job Requirements</p>
-              <ul>
-                {data.field && (
-                  <ul>
-                    {data.field.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-              </ul>
-            </>
-          )}
+            {data.requirement && (
+              <>
+                <p className='text-xl font-medium mb-1'>Job Requirements</p>
+                <ul>
+                  {data.requirement && (
+                    <ul className='flex flex-col gap-2'>
+                      {data.requirement.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
 
         {/* aside */}
@@ -144,7 +146,7 @@ const Details = ({ data }: { data: Opportunities }) => {
 
             {data.salary && (
               <div>
-                <p className='font-medium text-lg mb-3'>Skills Required</p>
+                <p className='font-medium text-lg mb-3'>Salary</p>
                 <p className='text-gray-700 list-disc'>{data.salary}</p>
               </div>
             )}
