@@ -1,24 +1,27 @@
+import PageHeader from '@/components/misc/page-header';
 import OpportunitiesList from '@/components/opportunities-list';
-import SearchForm from '@/components/search-form';
-import { opportunities } from '@/constants';
 
 export const metadata = {
   title: 'Masters',
 };
+
 const MastersPage = () => {
   return (
     <section className='bg-gray-50'>
-      <div className='bg-section bg-[url(/hero-img.jpg)]'>
-        <SearchForm />
+      <div className='bg-section-1 bg-[url(/hero-img.jpg)]'>
+        <div className='bg-overlay' />
+
+        <PageHeader>
+          <h1 className='w-full lg:w-[60%]'>Unlock Graduate Scholarships to Advance Your Academic and Career Goals</h1>
+        </PageHeader>
       </div>
 
       <div className='container py-10'>
         <OpportunitiesList
-          title='Academics Opportunities'
-          limit={8}
-          data={opportunities}
+          title='Masters Opportunities'
           layoutType='flex'
           listType='scholarship'
+          educationLevel='masters'
         />
       </div>
     </section>

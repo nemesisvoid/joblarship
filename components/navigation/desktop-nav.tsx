@@ -79,6 +79,10 @@ const DesktopNav = () => {
         <li className={`text-xl hover:text-orange-400 ${pathname === '/grants' ? 'text-orange-400' : ''}`}>
           <Link href='/grants'>Grants</Link>
         </li>
+
+        <li className={`text-xl hover:text-orange-400 ${pathname === '/contact' ? 'text-orange-400' : ''}`}>
+          <Link href='/contact'>Contact</Link>
+        </li>
       </ul>
     </nav>
   );

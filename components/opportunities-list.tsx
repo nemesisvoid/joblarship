@@ -8,22 +8,22 @@ import Pagination from './misc/pagination';
 import { useEffect, useState } from 'react';
 import { Opportunities } from '@/sanity/types';
 import { fetchPaginatedOpportunities } from '@/sanity/lib/queries';
-import { LoaderIcon } from 'lucide-react';
 import { Button } from './ui/button';
+import Loader from './misc/loader';
+import ErrorMessage from './misc/error-message';
 
 interface OpportunitiesListProps {
-  limit: number;
   title: string;
   filterButton?: boolean;
-  educationLevel: 'undergraduate' | 'masters' | 'phd';
-  careerLevel: 'academic' | 'industry' | 'others';
+  educationLevel?: 'undergraduate' | 'masters' | 'phd';
+  careerLevel?: 'academic' | 'industry' | 'others';
   layoutType?: 'grid' | 'flex';
   listType?: 'career' | 'scholarship' | 'fellowship' | 'academic' | 'grant';
 }
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 6;
 
-const OpportunitiesList = ({ title, layoutType = 'grid', listType }: OpportunitiesListProps) => {
+const OpportunitiesList = ({ title, layoutType = 'grid', listType, careerLevel, educationLevel, filterButton = false }: OpportunitiesListProps) => {
   const [activePage, setActivePage] = useState(1);
   const [data, setData] = useState<Opportunities[]>([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -31,20 +31,17 @@ const OpportunitiesList = ({ title, layoutType = 'grid', listType }: Opportuniti
 
   const [isPageLoading, setIsPageLoading] = useState(true);
 
-  console.log('active', activeFilter);
-
   useEffect(() => {
     const getData = async () => {
       setIsPageLoading(true);
-      const items = await fetchPaginatedOpportunities(activePage, PAGE_SIZE, activeFilter);
+      const items = await fetchPaginatedOpportunities(activePage, PAGE_SIZE, activeFilter, careerLevel, educationLevel);
       setData(items.opportunities);
-      console.log('items', items);
       const total = items.totalCount;
       setTotalPages(Math.ceil(total / PAGE_SIZE));
       setIsPageLoading(false);
     };
     getData();
-  }, [activePage, listType, activeFilter]);
+  }, [activePage, listType, activeFilter, careerLevel, educationLevel]);
 
   useEffect(() => {
     setActiveFilter(listType || '');
@@ -66,51 +63,46 @@ const OpportunitiesList = ({ title, layoutType = 'grid', listType }: Opportuniti
   return (
     <div className='relative'>
       <div className='flex flex-col lg:flex-row lg:items-center justify-between mb-10'>
-        <h2 className='text-2xl md:text-4xl font-medium mb-12'>{title}</h2>
+        <h2 className='text-2xl md:text-4xl font-medium mb-8'>{title}</h2>
 
-        <div className='flex items-center flex-wrap gap-5 self-start'>
-          <Button
-            className={setFilterButtonClassName('')}
-            onClick={() => handleFilterChange('')}>
-            All
-          </Button>
+        {filterButton && (
+          <div className='flex items-center flex-wrap gap-5 self-start'>
+            <Button
+              className={setFilterButtonClassName('')}
+              onClick={() => handleFilterChange('')}>
+              All
+            </Button>
 
-          <Button
-            className={setFilterButtonClassName('career')}
-            onClick={() => handleFilterChange('career')}>
-            Jobs
-          </Button>
+            <Button
+              className={setFilterButtonClassName('career')}
+              onClick={() => handleFilterChange('career')}>
+              Jobs
+            </Button>
 
-          <Button
-            className={setFilterButtonClassName('scholarship')}
-            onClick={() => handleFilterChange('scholarship')}>
-            Scholarships
-          </Button>
+            <Button
+              className={setFilterButtonClassName('scholarship')}
+              onClick={() => handleFilterChange('scholarship')}>
+              Scholarships
+            </Button>
 
-          <Button
-            className={setFilterButtonClassName('fellowship')}
-            onClick={() => handleFilterChange('fellowship')}>
-            Fellowship
-          </Button>
-          <Button
-            className={setFilterButtonClassName('grant')}
-            onClick={() => handleFilterChange('grant')}>
-            Grants
-          </Button>
-        </div>
+            <Button
+              className={setFilterButtonClassName('fellowship')}
+              onClick={() => handleFilterChange('fellowship')}>
+              Fellowship
+            </Button>
+            <Button
+              className={setFilterButtonClassName('grant')}
+              onClick={() => handleFilterChange('grant')}>
+              Grants
+            </Button>
+          </div>
+        )}
       </div>
 
       {isPageLoading ? (
-        <div className='h-40 flex items-center justify-center my-20'>
-          <LoaderIcon
-            className='animate-spin text-orange-500'
-            size={40}
-          />
-        </div>
+        <Loader />
       ) : !data || data.length === 0 ? (
-        <div className='text-gray-800 text-lg h-20 flex items-center justify-center'>
-          No opportunities available at the moment. Please check back later
-        </div>
+        <ErrorMessage>No opportunities available at the moment. Please check back later.</ErrorMessage>
       ) : (
         <div className={`${layoutType === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex flex-col gap-8'}`}>
           {!listType &&

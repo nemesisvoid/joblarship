@@ -72,7 +72,7 @@
   }
 
   .bg-overlay {
-    @apply absolute inset-0 bg-black/50 z-1;
+    @apply absolute inset-0 bg-black/65 z-1;
   }
 }
 

@@ -71,11 +71,10 @@ export const opportunities = defineType({
     }),
 
     defineField({
-      name: 'shortdesc',
-      title: 'Short Description',
-      description: 'A short description of the opportunity',
-      type: 'text',
-      hidden: ({ parent }) => parent.type,
+      name: 'employerName',
+      title: 'Name of Company,School, Fellowship, Grant or Organization',
+      description: 'The name of Employer, Company, Fellowship, Grant or Organization of Opportunity',
+      type: 'string',
       validation: Rule => Rule.required(),
     }),
 
@@ -96,7 +95,7 @@ export const opportunities = defineType({
       type: 'string',
       validation: Rule =>
         Rule.custom((value, context) => {
-          const type = context?.parent?.type;
+          const type = (context?.parent as { type?: string })?.type;
           if (type === 'scholarship' && !value) {
             return 'Funding type is required for scholarships';
           }
@@ -112,7 +111,7 @@ export const opportunities = defineType({
       type: 'string',
       validation: Rule =>
         Rule.custom((value, context) => {
-          const type = context?.parent?.type;
+          const type = (context?.parent as { type?: string })?.type;
           if (type === 'academic' && !value) {
             return 'Salary range is required for academic jobs.';
           }
@@ -183,6 +182,30 @@ export const opportunities = defineType({
     }),
 
     defineField({
+      name: 'jobType',
+      title: 'Job Type',
+      type: 'string',
+      placeholder: 'part-time, full-time, contract',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context?.parent as { type?: string })?.type;
+          if (type === 'career' && !value) {
+            return 'Salary range is required for academic jobs.';
+          }
+          return true;
+        }),
+      hidden: ({ parent }) => parent.type !== 'career',
+    }),
+
+    defineField({
+      name: 'covered',
+      title: 'List of what is covered',
+      description: 'Location of opportunity',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+
+    defineField({
       name: 'skills',
       title: 'Required skills',
       type: 'array',
@@ -212,7 +235,7 @@ export const opportunities = defineType({
       hidden: ({ parent }) => parent.type !== 'fellowship',
       validation: Rule =>
         Rule.custom((value, context) => {
-          const type = context?.parent?.type;
+          const type = (context?.parent as { type?: string })?.type;
           if (type === 'fellowship' && !value) {
             return 'Fellowship type is required for fellowships.';
           }

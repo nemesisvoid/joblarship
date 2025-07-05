@@ -1,4 +1,3 @@
-import { fellowships } from '@/constants';
 import HomePageList from '../homepage-list';
 
 const GrantSection = () => {
@@ -6,8 +5,9 @@ const GrantSection = () => {
     <section className='my-20'>
       <div className='container py-10'>
         <HomePageList
-          data={fellowships}
           title='Grants'
+          opportunityType='grant'
+          loadMoreAmount={4}
         />
       </div>
     </section>

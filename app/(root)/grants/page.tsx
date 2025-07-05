@@ -1,12 +1,9 @@
 import PageHeader from '@/components/misc/page-header';
 import OpportunitiesList from '@/components/opportunities-list';
-import SearchForm from '@/components/search-form';
-import { opportunities } from '@/constants';
-import React from 'react';
 
 const GrantsPage = () => {
   return (
-    <section className=' bg-gray-50'>
+    <section className=' bg-gray-50 pb-24'>
       <div className='bg-section-1 bg-[url(/hero-img.jpg)]'>
         <div className='bg-overlay' />
         <PageHeader>
@@ -14,9 +11,8 @@ const GrantsPage = () => {
         </PageHeader>
       </div>
 
-      <div className='container'>
+      <div className='container py-10'>
         <OpportunitiesList
-          limit={4}
           layoutType='flex'
           title='Grant Opportunities'
           listType='grant'

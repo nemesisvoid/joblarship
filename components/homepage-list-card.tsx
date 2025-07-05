@@ -1,9 +1,10 @@
-import { OpportunityType } from '@/types';
+import { urlFor } from '@/sanity/lib/sanity-image-url';
+import { Opportunities } from '@/sanity/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface HomePageListCardProps {
-  data: OpportunityType;
+  data: Opportunities;
 }
 const HomePageListCard = ({ data }: HomePageListCardProps) => {
   return (
@@ -11,22 +12,22 @@ const HomePageListCard = ({ data }: HomePageListCardProps) => {
       {data.image && (
         <div className='relative aspect-square w-[25%] shrink-0'>
           <Image
-            src={data.image}
+            src={urlFor(data.image).width(500).height(500).url()}
             alt=''
             fill
-            className='object-cover rounded-xs'
+            className='rounded-md object-cover'
           />
         </div>
       )}
 
       <div>
         <Link
-          href={`details/${data.slug}`}
+          href={`details/${data.slug?.current}`}
           className='text-xl font-medium hover:text-primary-100 duration-100 mb-3 inline-block max-w-[80%]'>
           <h3>{data.title}</h3>
         </Link>
 
-        <p className='text-lg text-gray-600'>Deadline: {data.deadline}</p>
+        {data.deadline && <p className='text-lg text-gray-600'>Deadline: {new Date(data.deadline).toDateString()}</p>}
       </div>
     </div>
   );

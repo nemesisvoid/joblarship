@@ -24,7 +24,7 @@ export type Opportunities = {
   type?: "scholarship" | "grant" | "fellowship" | "career" | "other";
   careerLevel?: "academic" | "industry" | "others";
   educationLevel?: "undergraduate" | "masters" | "phd";
-  shortdesc?: string;
+  employerName?: string;
   description?: string;
   funding?: string;
   salary?: string;
@@ -35,6 +35,8 @@ export type Opportunities = {
   requirement?: Array<string>;
   eligibility?: Array<string>;
   experience?: string;
+  jobType?: string;
+  covered?: Array<string>;
   skills?: Array<string>;
   deadline?: string;
   fellowshipType?: "ngo" | "individual" | "organization";

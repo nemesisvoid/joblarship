@@ -27,5 +27,11 @@ export const useSearchStore = create<searchStateType>(set => ({
   setFilters: filters => set({ filters }),
   setResults: results => set({ results }),
   setCountry: country => set({ country }),
-  clearFilters: () => set({ filters: { opportunity: '', country: '' }, results: [] }),
+  clearFilters: () =>
+    set({
+      filters: { opportunity: '', country: '' },
+      results: [],
+      opportunity: '', // Reset opportunity
+      country: '', // Reset country
+    }),
 }));

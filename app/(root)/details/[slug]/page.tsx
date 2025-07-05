@@ -10,7 +10,7 @@ const DetailsPage = async (props: { params: Promise<{ slug: string }> }) => {
 
   return (
     <section className='bg-gray-50 py-4'>
-      <div className='container my-20'>
+      <div className='container mt-10 my-20'>
         <Details data={data} />
       </div>
     </section>

@@ -3,21 +3,13 @@ import React from 'react';
 
 import { useSearchStore } from '@/store';
 import OpportunityCard from './opportunity-card';
-import { Loader } from 'lucide-react';
+import Loader from './misc/loader';
 
 const SearchList = () => {
   const { results, country, opportunity, isLoading, clearFilters } = useSearchStore();
   console.log(results);
 
-  if (isLoading)
-    return (
-      <div className='flex items-center justify-center h-[20vh]'>
-        <Loader
-          className='animate-spin text-orange-600'
-          size={45}
-        />
-      </div>
-    );
+  if (isLoading) return <Loader />;
   if (!opportunity || !country) return null;
 
   if (opportunity && country && (!results || results.length === 0))

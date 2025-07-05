@@ -8,7 +8,6 @@ import React from 'react';
 
 const Home = async () => {
   const data = await fetchPaginatedOpportunities();
-  console.log(data);
   return (
     <div>
       <HeroSection />

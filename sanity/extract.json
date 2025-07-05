@@ -120,7 +120,7 @@
         },
         "optional": true
       },
-      "shortdesc": {
+      "employerName": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -206,6 +206,23 @@
         "type": "objectAttribute",
         "value": {
           "type": "string"
+        },
+        "optional": true
+      },
+      "jobType": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "covered": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "string"
+          }
         },
         "optional": true
       },

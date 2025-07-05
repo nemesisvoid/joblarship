@@ -141,6 +141,16 @@ const MobileNav = () => {
                   Grants
                 </Link>
               </li>
+
+              <li
+                className='text-xl px-6 py-3'
+                onClick={handleNavClose}>
+                <Link
+                  href='/contact'
+                  className={`${pathname === '/contact' ? 'text-primary-100' : ''}`}>
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </motion.div>
