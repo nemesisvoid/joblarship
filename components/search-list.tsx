@@ -15,12 +15,12 @@ const SearchList = () => {
 
   if (opportunity && country && (!results || results.length === 0))
     return (
-      <div className='container flex justify-between items-center my-20'>
+      <div className='container flex flex-col md:flex-row justify-between max-md:gap-4 md:items-center my-20'>
         <p className='text-2xl'>No filters matches this search</p>
 
         <button
           onClick={clearFilters}
-          className='self-center flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
+          className='self-start flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
           <span>Clear Filters</span>
           <X className='w-4 h-4' />
         </button>
@@ -29,7 +29,7 @@ const SearchList = () => {
 
   return (
     <div className='container my-20'>
-      <div className='flex justify-between mb-10'>
+      <div className='flex flex-col max-md:gap-4 md:flex-row justify-between mb-10'>
         <div className='mb-2'>
           <h3 className='text-xl'>
             {results && results.length > 0 ? `Search results for ${opportunity} opportunities in ${country}` : 'No filters matches this search'}
@@ -40,7 +40,7 @@ const SearchList = () => {
 
         <button
           onClick={clearFilters}
-          className='self-center flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
+          className='self-start md:self-center flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg shadow-sm transition-colors cursor-pointer'>
           <span>Clear Filters</span>
           <X className='w-4 h-4' />
         </button>
