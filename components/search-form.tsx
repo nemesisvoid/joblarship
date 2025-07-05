@@ -52,7 +52,7 @@ const SearchForm = () => {
                 {opportunityType.map(link => (
                   <SelectItem
                     key={link.name}
-                    value={link.name.toLowerCase()}>
+                    value={link.value}>
                     {link.name}
                   </SelectItem>
                 ))}

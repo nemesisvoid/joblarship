@@ -83,20 +83,8 @@ const ContactForm = () => {
     {
       icon: <MailIcon className='w-6 h-6' />,
       label: 'Email',
-      value: 'joblarship@gmail.com',
+      value: 'contact@joblarship.com',
       description: 'Send us a mail anytime!',
-    },
-    {
-      icon: <PhoneIcon className='w-6 h-6' />,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 5pm',
-    },
-    {
-      icon: <MapPinIcon className='w-6 h-6' />,
-      label: 'Office',
-      value: '123 Business Ave',
-      description: 'Suite 100, City, State 12345',
     },
   ];
 

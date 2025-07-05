@@ -31,7 +31,7 @@ const DesktopNav = () => {
           }  ${academicDropdownLinks.some(link => link.link === pathname) ? 'text-orange-400' : ''}`}
           onMouseEnter={handleIsDropdownOpen1}
           onMouseLeave={handleIsDropdownOpen1}>
-          Careers
+          Jobs
           <ChevronDownIcon className={`${isDropdownOpen1 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
           <div
             className={`${isDropdownOpen1 ? 'absolute' : 'hidden'} flex flex-col gap-3 w-[260%] top-7 -left-2 z-100 mb-10 bg-gray-100  rounded-xs`}>
@@ -73,7 +73,7 @@ const DesktopNav = () => {
         </li>
 
         <li className={`text-xl ${pathname.startsWith('/fellowships') ? 'text-orange-400' : ''}`}>
-          <Link href='/fellowships'>Fellowship</Link>
+          <Link href='/fellowships'>Fellowships</Link>
         </li>
 
         <li className={`text-xl hover:text-orange-400 ${pathname === '/grants' ? 'text-orange-400' : ''}`}>

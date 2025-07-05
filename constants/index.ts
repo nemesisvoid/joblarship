@@ -1,35 +1,40 @@
 export const opportunityType = [
   {
-    name: 'Career',
+    name: 'Job',
+    value: 'career',
   },
+
   {
     name: 'Scholarship',
+    value: 'scholarship',
   },
   {
     name: 'Grant',
+    value: 'grant',
   },
   {
     name: 'Fellowship',
+    value: 'fellowship',
   },
 ];
 export const academicDropdownLinks = [
   {
     name: 'Academics',
-    link: '/careers/academics',
+    link: '/jobs/academics',
   },
   {
     name: 'Industry',
-    link: '/careers/industries',
+    link: '/jobs/industries',
   },
   {
     name: 'Others',
-    link: '/careers/others',
+    link: '/jobs/others',
   },
 ];
 
 export const scholarshipDropdownLinks = [
   {
-    name: 'Undergraduates',
+    name: 'Undergraduate',
     link: '/scholarships/undergraduates',
   },
   {

@@ -71,7 +71,7 @@ const MobileNav = () => {
                 <div
                   className='text-xl relative flex items-center justify-between cursor-pointer px-6'
                   onClick={handleIsDropdownOpen1}>
-                  Careers
+                  Jobs
                   <ChevronDownIcon className={`${isDropdownOpen1 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
                 </div>
 
@@ -128,7 +128,7 @@ const MobileNav = () => {
                 <Link
                   href='/fellowships'
                   className={`${pathname === '/fellowships' ? 'text-primary-100' : ''}`}>
-                  Fellowship
+                  Fellowships
                 </Link>
               </li>
 

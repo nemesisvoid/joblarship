@@ -27,7 +27,7 @@ export const opportunities = defineType({
           { title: 'Scholarship', value: 'scholarship' },
           { title: 'Grant', value: 'grant' },
           { title: 'Fellowship', value: 'fellowship' },
-          { title: 'Career', value: 'career' },
+          { title: 'Job', value: 'career' },
           { title: 'Other', value: 'other' },
         ],
       },
