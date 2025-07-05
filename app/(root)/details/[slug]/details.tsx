@@ -11,6 +11,7 @@ import { FaCalendarAlt } from 'react-icons/fa';
 
 const Details = ({ data }: { data: Opportunities }) => {
   const currentUrl = encodeURIComponent(window.location.href);
+  console.log(currentUrl);
 
   const text = encodeURIComponent('Check out this opportunity!');
 
