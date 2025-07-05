@@ -63,7 +63,7 @@ const OpportunitiesList = ({ title, layoutType = 'grid', listType, careerLevel, 
   return (
     <div className='relative'>
       <div className='flex flex-col lg:flex-row lg:items-center justify-between mb-10'>
-        <h2 className='text-2xl md:text-4xl font-medium mb-8'>{title}</h2>
+        <h2 className='text-2xl md:text-4xl font-medium mb-4'>{title}</h2>
 
         {filterButton && (
           <div className='flex items-center flex-wrap gap-5 self-start'>
@@ -121,7 +121,8 @@ const OpportunitiesList = ({ title, layoutType = 'grid', listType, careerLevel, 
               />
             ))}
 
-          {listType === 'academic' &&
+          {listType === 'career' &&
+            careerLevel &&
             data.map((item, i) => (
               <CareerCard
                 data={item}

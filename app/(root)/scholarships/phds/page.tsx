@@ -15,12 +15,12 @@ const PhdPage = () => {
         </PageHeader>
       </div>
 
-      <div className='container py-10'>
+      <div className='container py-2 md:py-4'>
         <OpportunitiesList
           title='Phd Opportunities'
           layoutType='flex'
           listType='scholarship'
-          educationLevel='master'
+          educationLevel='masters'
         />
       </div>
     </section>

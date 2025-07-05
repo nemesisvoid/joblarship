@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Opportunities } from '@/sanity/types';
 
+import { FaLocationDot } from 'react-icons/fa6';
+import { FaCalendarAlt } from 'react-icons/fa';
+import { WalletIcon } from 'lucide-react';
+
 const CareerCard = ({ data }: { data: Opportunities }) => {
   return (
     <Card className='w-full px-3'>
@@ -13,15 +17,23 @@ const CareerCard = ({ data }: { data: Opportunities }) => {
         <CardTitle className='text-gray-400 text-lg my-2'>{data.employerName || data.location}</CardTitle>
 
         <div className='flex items-center flex-wrap gap-4 mb-1'>
-          <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
+          <div className='bg-blue-200 text-blue-600 flex items-center gap-3 py-1 px-3 rounded-xs'>
+            <FaLocationDot size={20} />
             <span>{data.country}</span>
           </div>
-          <div className='bg-purple-200 text-purple-600 px-4 py-1 rounded-xs'>
-            <span>{data.title}</span>
+
+          <div className='bg-purple-200 text-purple-600 flex items-center gap-3 px-3 py-1 rounded-xs'>
+            <FaCalendarAlt size={20} />
+            <span>{data.jobType}</span>
           </div>
+
           {data.salary && (
             <div className='bg-green-100 text-green-600 flex items-center gap-3 px-4 py-1 rounded-xs'>
-              <span>NGN {data.salary}</span>
+              <WalletIcon />
+              <p className='flex gap-1 items-center'>
+                <span>NGN</span>
+                {data.salary}
+              </p>
             </div>
           )}
         </div>

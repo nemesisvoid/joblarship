@@ -3,7 +3,7 @@ import HomePageList from '../homepage-list';
 const GrantSection = () => {
   return (
     <section className='my-20'>
-      <div className='container py-10'>
+      <div className='container py-2 md:py-4'>
         <HomePageList
           title='Grants'
           opportunityType='grant'

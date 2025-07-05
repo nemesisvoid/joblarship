@@ -17,11 +17,11 @@ const AcademicsPage = () => {
         </PageHeader>
       </div>
 
-      <div className='container py-10'>
+      <div className='container py-2 md:py-4'>
         <OpportunitiesList
           title='Academics Opportunities'
           layoutType='flex'
-          listType='academic'
+          listType='career'
           careerLevel='academic'
         />
       </div>

@@ -221,9 +221,9 @@ export const opportunities = defineType({
     }),
 
     defineField({
-      name: 'fellowshipType',
-      title: 'Fellowship Type',
-      description: 'Type of opportunity',
+      name: 'grantType',
+      title: 'Grant Type',
+      description: 'Who the grant is for',
       type: 'string',
       options: {
         list: [
@@ -236,7 +236,7 @@ export const opportunities = defineType({
       validation: Rule =>
         Rule.custom((value, context) => {
           const type = (context?.parent as { type?: string })?.type;
-          if (type === 'fellowship' && !value) {
+          if (type === 'grant' && !value) {
             return 'Fellowship type is required for fellowships.';
           }
           return true;

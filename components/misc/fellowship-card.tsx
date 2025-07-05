@@ -10,11 +10,11 @@ const FellowshipCard = ({ data }: { data: Opportunities }) => {
       <CardHeader>
         <CardTitle className='text-2xl md:text-3xl'>Green Foreign Fellowship</CardTitle>
 
-        <CardTitle className='text-gray-400 font-medium my-2'>{data.employerName || data.location}</CardTitle>
+        <CardTitle className='text-gray-400 font-medium my-5 md:my-3'>{data.location}</CardTitle>
 
         <div className='flex items-center flex-wrap gap-4 mb-1'>
           <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
-            <span>For: NGOs</span>
+            <span> {data.employerName}</span>
           </div>
           {data.deadline && (
             <div className='bg-purple-100 text-purple-600 flex items-center gap-3 px-3 py-1 rounded-xs'>

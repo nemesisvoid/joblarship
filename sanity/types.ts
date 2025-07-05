@@ -39,7 +39,7 @@ export type Opportunities = {
   covered?: Array<string>;
   skills?: Array<string>;
   deadline?: string;
-  fellowshipType?: "ngo" | "individual" | "organization";
+  grantType?: "ngo" | "individual" | "organization";
   image?: {
     asset?: {
       _ref: string;

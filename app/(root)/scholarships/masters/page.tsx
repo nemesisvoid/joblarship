@@ -16,7 +16,7 @@ const MastersPage = () => {
         </PageHeader>
       </div>
 
-      <div className='container py-10'>
+      <div className='container py-2 md:py-4'>
         <OpportunitiesList
           title='Masters Opportunities'
           layoutType='flex'
