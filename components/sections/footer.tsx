@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { BsFacebook, BsInstagram, BsWhatsapp } from 'react-icons/bs';
+import { BsFacebook, BsInstagram } from 'react-icons/bs';
+import { FaXTwitter } from 'react-icons/fa6';
 // import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
@@ -10,22 +11,15 @@ const Footer = () => {
         <div className='flex items-center gap-5'>
           <div>
             <Link
-              href={``}
+              href={`https://www.twitter.com/@joblarship49047`}
               target='_blank'
               rel='noopener noreferrer'>
-              <BsWhatsapp
+              <FaXTwitter
                 size={24}
                 color='white'
               />
             </Link>
           </div>
-          {/* <div>
-            <FaXTwitter
-              size={24}
-              color='white'
-            />
-          </div>
-          */}
           <div>
             <Link
               href={`https://www.facebook.com/share/15oZyTQtxU/`}

@@ -94,7 +94,7 @@ const Details = ({ data }: { data: Opportunities }) => {
             )}
 
             <div>
-              <p className='text-lg font-medium mb-4'>Share</p>
+              <p className='text-xl font-medium mb-5'>Share</p>
               <div className='flex items-center gap-4'>
                 <div>
                   <Link
