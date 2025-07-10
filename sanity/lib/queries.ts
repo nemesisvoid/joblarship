@@ -45,6 +45,7 @@ export async function fetchPaginatedOpportunities(page = 1, pageSize = 2, queryT
       salary,
       jobType,
       deadline,
+      shortdesc,
       description,
       funding
     }

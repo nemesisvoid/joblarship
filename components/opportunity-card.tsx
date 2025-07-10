@@ -63,7 +63,7 @@ const OpportunityCard = ({ data }: OpportunityCardProps) => {
           )}
         </div>
 
-        <p className='mb-5 text-gray-700 leading-relaxed line-clamp-3 '>{data.description}</p>
+        <p className='mb-5 text-gray-700 leading-relaxed'>{data.shortdesc}</p>
 
         <Link
           href={`/details/${data.slug?.current}`}

@@ -37,7 +37,7 @@ const ScholarshipCard = ({ data }: { data: Opportunities }) => {
           </p>
         </div>
 
-        <p className='text-lg leading-loose mb-10 md:mb-2 line-clamp-3'>{data.description}</p>
+        <p className='text-lg leading-loose mb-10 md:mb-2 line-clamp-3'>{data.shortdesc}</p>
 
         <div className='md:self-end mt-auto w-1/3'>
           <Button

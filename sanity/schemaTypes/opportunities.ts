@@ -10,14 +10,18 @@ export const opportunities = defineType({
       title: 'Opportunity Title',
       type: 'text',
       description: 'The title of the opportunity',
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'slug',
       type: 'slug',
       options: {
         source: 'title',
       },
+      validation: Rule => Rule.required(),
     }),
+
     defineField({
       name: 'type',
       title: 'Opportunity Type',
@@ -79,11 +83,70 @@ export const opportunities = defineType({
     }),
 
     defineField({
+      name: 'shortdesc',
+      title: 'Short Description',
+      description: 'A short description of the opportunity',
+      type: 'text',
+      validation: Rule => Rule.required(),
+    }),
+
+    defineField({
       name: 'description',
       title: 'Description',
-      description: 'The description of the opportunity',
-      type: 'text',
-      hidden: ({ parent }) => parent.type,
+      type: 'array', // Portable Text fields are of type 'array'
+      of: [
+        {
+          type: 'block', // Standard block type for paragraphs, headings, lists
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H1', value: 'h1' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
+            { title: 'H6', value: 'h6' },
+            { title: 'Quote', value: 'blockquote' }, // Add a quote style
+          ],
+          lists: [
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' }, // Add code decorator
+              { title: 'Underline', value: 'underline' }, // Add underline decorator
+              { title: 'Strike', value: 'strike-through' }, // Add strike-through decorator
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'URL',
+                fields: [
+                  {
+                    title: 'URL',
+                    name: 'href',
+                    type: 'url',
+                  },
+                ],
+              },
+              // You can add more annotations here, e.g., for internal links
+            ],
+          },
+        },
+
+        // custom block types if needed
+        // {
+        //   name: 'customComponent',
+        //   title: 'Custom Component',
+        //   type: 'object',
+        //   fields: [
+        //     { name: 'text', type: 'string', title: 'Text' },
+        //   ],
+        // },
+      ],
       validation: Rule => Rule.required(),
     }),
 
@@ -147,33 +210,6 @@ export const opportunities = defineType({
     }),
 
     defineField({
-      name: 'field',
-      title: 'Required Fields of study',
-      description: 'List of required fields',
-      type: 'array',
-      of: [{ type: 'string' }],
-      hidden: ({ parent }) => parent.type === 'career',
-    }),
-
-    defineField({
-      name: 'requirement',
-      title: 'Job Requirements',
-      description: 'List of requirements',
-      type: 'array',
-      of: [{ type: 'string' }],
-      hidden: ({ parent }) => parent.type !== 'career',
-    }),
-
-    defineField({
-      name: 'eligibility',
-      title: 'Eligibility',
-      description: 'Eligibility requirements',
-      type: 'array',
-      of: [{ type: 'string' }],
-      hidden: ({ parent }) => parent.type === 'career',
-    }),
-
-    defineField({
       name: 'experience',
       title: 'Job Experience',
       type: 'string',
@@ -195,14 +231,6 @@ export const opportunities = defineType({
           return true;
         }),
       hidden: ({ parent }) => parent.type !== 'career',
-    }),
-
-    defineField({
-      name: 'covered',
-      title: 'List of what is covered',
-      description: 'Location of opportunity',
-      type: 'array',
-      of: [{ type: 'string' }],
     }),
 
     defineField({

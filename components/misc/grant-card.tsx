@@ -28,7 +28,7 @@ const GrantCard = ({ data }: { data: Opportunities }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <CardDescription className='text-lg leading-loose text-gray-700 line-clamp-3'>{data.description}</CardDescription>
+        <CardDescription className='text-lg leading-loose text-gray-700 line-clamp-3'>{data.shortdesc}</CardDescription>
       </CardContent>
       <CardFooter className='flex justify-end'>
         <Button

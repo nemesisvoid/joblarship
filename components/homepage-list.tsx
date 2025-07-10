@@ -5,6 +5,7 @@ import { loadOpportunities } from '@/sanity/lib/queries';
 import { useEffect, useState } from 'react';
 import { LoaderIcon } from 'lucide-react';
 import { Opportunities } from '@/sanity/types';
+import ErrorMessage from './misc/error-message';
 
 interface HomePageListProps {
   title: string;
@@ -67,7 +68,7 @@ const HomePageList = ({ title, opportunityType, limit = 4, loadMoreAmount = 2 }:
   if (!data || data.length === 0)
     return (
       <div className='flex items-center justify-center h-64'>
-        <p>Data not available</p>
+        <ErrorMessage>No {opportunityType} opportunities available at the moment. Please check back later.</ErrorMessage>
       </div>
     );
   return (
