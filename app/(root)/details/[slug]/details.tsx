@@ -9,6 +9,7 @@ import { Opportunities } from '@/sanity/types';
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitterX } from 'react-icons/bs';
 import { FaCalendarAlt } from 'react-icons/fa';
 import PortableTextRenderer from '@/components/misc/portable-text-renderer';
+import { Button } from '@/components/ui/button';
 
 const Details = ({ data }: { data: Opportunities }) => {
   const currentUrl = encodeURIComponent(window.location.href);
@@ -37,8 +38,8 @@ const Details = ({ data }: { data: Opportunities }) => {
             className='rounded-md object-cover'
           />
         </div>
-        <h1 className='text-3xl md:text-5xl text-black text-left mb-2'>{data.title}</h1>
-        <p className='text-gray-500 text-2xl mb-5'>{data?.location}</p>
+        <h1 className='text-3xl md:text-4xl text-black text-left mb-2'>{data.title}</h1>
+        <p className='text-gray-500 text-xl mb-5'>{data?.location}</p>
 
         {data.deadline && (
           <p className='bg-red-200 text-red-500 w-fit flex items-center gap-3 px-3 py-1 rounded-xs'>
@@ -50,29 +51,12 @@ const Details = ({ data }: { data: Opportunities }) => {
 
       <div className='flex flex-col lg:flex-row justify-between gap-20'>
         <div className='w-full md:w-[85%]'>
-          <h3 className='capitalize text-2xl font-medium mb-3'>{data.type} Details and Requirements</h3>
-
           <PortableTextRenderer content={data.description} />
         </div>
 
         {/* aside */}
-        <aside className='w-full md:w-[55%] lg:w-[55%] bg-white shadow-lg py-8 px-10 rounded-xl'>
+        <aside className='w-full md:w-[55%] lg:w-[50%] bg-white self-start shadow-lg py-8 px-10 rounded-xl'>
           <div className='flex flex-col gap-10'>
-            {data.qualification && (
-              <div>
-                <p className='font-medium text-lg mb-3'>Minimum Qualifications</p>
-                <ol className='flex flex-col gap-2 list-disc'>
-                  {data.qualification.map((item, i) => (
-                    <li
-                      className='text-gray-700'
-                      key={i}>
-                      {item}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-
             {data.skills && (
               <div>
                 <p className='font-medium text-lg mb-3'>Skills Required</p>
@@ -146,6 +130,19 @@ const Details = ({ data }: { data: Opportunities }) => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className='mt-14'>
+            <Button
+              className='text-lg py-6 w-1/2 cursor-pointer'
+              asChild>
+              <Link
+                href={data.applicationLink!}
+                target='_blank'
+                rel='noopener noreferrer'>
+                Apply
+              </Link>
+            </Button>
           </div>
         </aside>
       </div>

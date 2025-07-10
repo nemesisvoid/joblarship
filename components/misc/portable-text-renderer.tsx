@@ -4,8 +4,8 @@ const components = {
   types: {},
   block: {
     // This handles different 'styles' defined in your schema (e.g., 'normal', 'h1', 'blockquote')
-    h1: ({ children }: { children: React.ReactNode }) => <h1 className='text-5xl font-bold my-4'>{children}</h1>,
-    h2: ({ children }: { children: React.ReactNode }) => <h2 className='text-4xl font-bold my-3'>{children}</h2>,
+    h1: ({ children }: { children: React.ReactNode }) => <h1 className='text-4xl font-medium my-4'>{children}</h1>,
+    h2: ({ children }: { children: React.ReactNode }) => <h2 className='text-4xl font-medium my-3'>{children}</h2>,
     normal: ({ children }: { children: React.ReactNode }) => <p className='text-base leading-relaxed my-2'>{children}</p>,
     blockquote: ({ children }: { children: React.ReactNode }) => (
       <blockquote className='border-l-4 border-gray-300 pl-4 italic my-4'>{children}</blockquote>
