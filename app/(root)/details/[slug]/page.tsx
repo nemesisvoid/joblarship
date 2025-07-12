@@ -7,17 +7,20 @@ import Details from './details';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const data: Opportunities = await client.fetch(getOpportunityBySlug, { slug: params.slug });
 
+  const siteUrl = 'https://joblarship.com';
+  const defaultImage = `${siteUrl}/logo.png`;
+
   return {
     title: data.title,
     description: data.shortdesc,
     openGraph: {
       title: data.title,
       description: data.description,
-      url: `https://joblarship.com/details/${params.slug}`,
+      url: `${siteUrl}/details/${params.slug}`,
       type: 'website',
       images: [
         {
-          url: data.image, // Make sure it's a full image URL
+          url: defaultImage,
           width: 1200,
           height: 630,
         },
