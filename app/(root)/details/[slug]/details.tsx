@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,8 +13,11 @@ import PortableTextRenderer from '@/components/misc/portable-text-renderer';
 import { Button } from '@/components/ui/button';
 
 const Details = ({ data }: { data: Opportunities }) => {
-  const currentUrl = encodeURIComponent(window.location.href);
-  console.log(currentUrl);
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== undefined) setCurrentUrl(window.location.href);
+  }, [currentUrl]);
 
   const text = encodeURIComponent('Check out this opportunity!');
 

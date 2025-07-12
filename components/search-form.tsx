@@ -15,8 +15,6 @@ const SearchForm = () => {
   const [localCountry, setLocalCountry] = useState('');
   const { setResults, setCountry, setOpportunity, setIsLoading } = useSearchStore();
 
-  console.log(localOpportunity, localCountry);
-
   const handleSubmit = async (e: React.FormEvent) => {
     if (!localCountry || !localOpportunity) return null;
     e.preventDefault();
@@ -29,7 +27,6 @@ const SearchForm = () => {
     try {
       const data = await client.fetch(getOpportunitiesBySearch, { localOpportunity, localCountry });
       setResults(data);
-      console.log(data);
       setIsLoading(false);
     } finally {
       setIsLoading(false);

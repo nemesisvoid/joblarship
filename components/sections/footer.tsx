@@ -31,6 +31,7 @@ const Footer = () => {
               />
             </Link>
           </div>
+
           <div>
             <Link
               href={`https://www.instagram.com/joblarship?utm_source=qr&igsh=aXpjdndsazdzazZx`}
@@ -42,6 +43,8 @@ const Footer = () => {
               />
             </Link>
           </div>
+
+          <div></div>
         </div>
       </div>
     </footer>
