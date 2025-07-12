@@ -15,7 +15,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: data.shortdesc,
     openGraph: {
       title: data.title,
-      description: data.description,
       url: `${siteUrl}/details/${params.slug}`,
       type: 'website',
       images: [
