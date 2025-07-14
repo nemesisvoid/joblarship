@@ -14,7 +14,7 @@ export const SendMail = async ({ name, email, phone, message }: SendMailProps) =
     const { data, error } = await resend.emails.send({
       from: 'Joblarship <support@joblarship.com>',
       subject: 'Contact Form Submission',
-      to: 'samsonadebowale40@gmail.com',
+      to: 'joblarship@gmail.com',
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
       react: ContactFormEmail({ name, email, phone, message }),
     });
