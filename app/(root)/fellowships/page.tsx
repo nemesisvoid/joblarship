@@ -8,7 +8,7 @@ export const metadata = {
 const FellowshipsPage = () => {
   return (
     <section className='bg-gray-50 pb-24'>
-      <div className='bg-section-1 bg-[url(/hero-img.jpg)]'>
+      <div className='bg-section-1 bg-[url(/hero-imgs/hero-fellowship.jpg)]'>
         <div className='bg-overlay' />
         <PageHeader>
           <h1 className='w-full lg:w-[55%]'>Discover Prestigious Fellowships to Grow Professionally and Academically</h1>

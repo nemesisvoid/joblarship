@@ -1,5 +1,5 @@
 'use server';
-import ContactFormEmail from '@/components/email/contact-form';
+import ContactFormEmail from '@/components/email/contact-form-email';
 import { Resend } from 'resend';
 
 interface SendMailProps {
@@ -12,18 +12,14 @@ export const SendMail = async ({ name, email, phone, message }: SendMailProps) =
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Joblarship <support@joblarship.com>',
+      from: 'Joblarship <contact@joblarship.com>',
       subject: 'Contact Form Submission',
       to: 'joblarship@gmail.com',
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
       react: ContactFormEmail({ name, email, phone, message }),
     });
-    console.log(data, error);
     if (data) return { success: 'Message sent successfully' };
-
-    if (error) return { error: 'Failed to send email' };
-
-    if (error) throw new Error('Failed to send email');
+    return { error: 'Failed to send email' };
   } catch (error) {
     console.log(error);
   }

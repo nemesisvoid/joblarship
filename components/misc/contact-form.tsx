@@ -68,10 +68,12 @@ const ContactForm = () => {
     try {
       const res = await SendMail(formData);
       setIsSubmitting(false);
-
       if (res?.success) setSubmitSuccess(true);
-      console.log(res?.success);
       if (res?.error) setErrors({ error: res?.error });
+
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 4000);
     } catch (error) {
       console.error(error);
     } finally {

@@ -8,7 +8,7 @@ export const metadata = {
 const MastersPage = () => {
   return (
     <section className='bg-gray-50'>
-      <div className='bg-section-1 bg-[url(/hero-img.jpg)]'>
+      <div className='bg-section-1 bg-[url(/hero-imgs/hero-masters.jpg)]'>
         <div className='bg-overlay' />
 
         <PageHeader>

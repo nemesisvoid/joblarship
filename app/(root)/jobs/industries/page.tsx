@@ -8,7 +8,7 @@ export const metadata = {
 const IndustriesPage = () => {
   return (
     <section className='bg-gray-50'>
-      <div className='bg-section-1 bg-[url(/hero-img.jpg)]'>
+      <div className='bg-section-1 bg-[url(/hero-imgs/hero-industry.jpg)]'>
         <div className='bg-overlay' />
         <PageHeader>
           <h1 className='text-white text-3xl md:text-5xl text-center font-medium leading-snug z-10 w-full lg:w-[50%]'>
