@@ -1,11 +1,14 @@
 'use client';
-import { AlertCircleIcon, CheckCircleIcon, MailIcon, SendIcon } from 'lucide-react';
+
 import React, { useState } from 'react';
-import { Input } from '../ui/input';
-import { BsFacebook, BsInstagram, BsTwitterX } from 'react-icons/bs';
 import Link from 'next/link';
+
 import { SendMail } from '@/app/action/send-email';
+import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
+
+import { AlertCircleIcon, CheckCircleIcon, MailIcon, SendIcon } from 'lucide-react';
+import { BsFacebook, BsInstagram, BsTwitterX } from 'react-icons/bs';
 
 interface FormData {
   name: string;

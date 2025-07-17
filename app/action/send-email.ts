@@ -11,7 +11,7 @@ interface SendMailProps {
 export const SendMail = async ({ name, email, phone, message }: SendMailProps) => {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
-    const { data, error } = await resend.emails.send({
+    const { data } = await resend.emails.send({
       from: 'Joblarship <contact@joblarship.com>',
       subject: 'Contact Form Submission',
       to: 'joblarship@gmail.com',
