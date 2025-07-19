@@ -1,4 +1,5 @@
 'use client';
+import * as gtag from '@/lib/gtag';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -267,6 +268,14 @@ const ContactForm = () => {
             <div className='flex items-center justify-between pt-6'>
               <p className='text-sm text-gray-600'>* Required fields</p>
               <button
+                onClick={() => {
+                  gtag.event({
+                    action: 'submit_form',
+                    category: 'Contact',
+                    label: 'Contact Us',
+                    value: 1,
+                  });
+                }}
                 type='submit'
                 disabled={isSubmitting}
                 className='bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-700 hover:to-orange-500 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2  focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer disabled:transform-none flex items-center space-x-2'>
