@@ -45,8 +45,15 @@ const SearchList = () => {
           <X className='w-4 h-4' />
         </button>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-3'>
-        <OpportunityCard data={results[0]} />
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+        {results &&
+          results.length > 0 &&
+          results.map((result, index) => (
+            <OpportunityCard
+              key={index}
+              data={result}
+            />
+          ))}
       </div>
     </div>
   );

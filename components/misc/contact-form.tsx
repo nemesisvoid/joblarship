@@ -67,12 +67,14 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+
     gtag.event({
       action: 'submit_form',
       category: 'Contact',
       label: 'Contact Form',
       value: 1,
     });
+
     setIsSubmitting(true);
     setFormData({ name: '', email: '', phone: '', message: '' });
     try {
