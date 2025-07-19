@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { Analytics } from '@vercel/analytics/next';
 
 import { Geist, Geist_Mono, Open_Sans } from 'next/font/google';
@@ -39,6 +41,7 @@ export default function RootLayout({
       <body className={`${openSans.className} ${geistSans.variable} ${geistMono.variable}  antialiased`}>
         {children}
         <Analytics />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
       </body>
     </html>
   );
