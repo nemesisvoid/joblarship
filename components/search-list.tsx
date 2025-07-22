@@ -32,7 +32,7 @@ const SearchList = () => {
       <div className='flex flex-col max-md:gap-4 md:flex-row justify-between mb-10'>
         <div className='mb-2'>
           <h3 className='text-xl'>
-            {results && results.length > 0 ? `Search results for ${opportunity} opportunities in ${country}` : 'No filters matches this search'}
+            {results && results.length > 0 ? `Search results for "${opportunity}" opportunities in ${country}` : 'No filters matches this search'}
           </h3>
 
           <p className='text-lg text-gray-600'>{results && `Found ${results.length} results`}</p>
