@@ -31,8 +31,8 @@ const FellowshipCard = ({ data }: { data: Opportunities }) => {
         <Button
           asChild
           className='bg-primary-100 text-white text-lg py-6 px-6 w-full md:w-[15%]
-           rounded-md hover:bg-primary-100/70 transition-colors duration-300'>
-          <Link href={`/details${data.slug?.current}`}>Details</Link>
+           rounded-md hover:bg-primary-100/70 transition-colors duration-30'>
+          <Link href={`/details/${data.slug?.current}`}>Details</Link>
         </Button>
       </CardFooter>
     </Card>
