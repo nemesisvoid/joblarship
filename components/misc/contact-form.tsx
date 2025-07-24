@@ -97,7 +97,7 @@ const ContactForm = () => {
     {
       icon: <MailIcon className='w-6 h-6' />,
       label: 'Email',
-      value: 'contact@joblarship.com',
+      value: 'joblarship@gmail.com',
       description: 'Send us a mail anytime!',
     },
   ];
@@ -108,7 +108,7 @@ const ContactForm = () => {
       icon: <BsInstagram className='w-6 h-6' />,
     },
     {
-      href: '',
+      href: 'https://www.twitter.com/@joblarship49047',
       icon: <BsTwitterX className='w-6 h-6' />,
     },
     {

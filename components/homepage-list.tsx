@@ -72,7 +72,7 @@ const HomePageList = ({ title, opportunityType, limit = 4, loadMoreAmount = 2 }:
       </div>
     );
   return (
-    <div>
+    <div className='pt-4'>
       <h2 className='text-3xl font-medium mb-12'>{title}</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
         {data.map((item, i) => (
