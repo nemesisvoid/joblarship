@@ -34,7 +34,7 @@ const DesktopNav = () => {
           Jobs
           <ChevronDownIcon className={`${isDropdownOpen1 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
           <div
-            className={`${isDropdownOpen1 ? 'absolute' : 'hidden'} flex flex-col gap-2 w-[290%] top-7 -left-2 z-100 mb-10 bg-gray-100  rounded-xs`}>
+            className={`${isDropdownOpen1 ? 'absolute' : 'hidden'} flex flex-col gap-2 w-[300%] top-7 -left-2 z-100 mb-10 bg-gray-100  rounded-xs`}>
             {academicDropdownLinks.map((item, i) => (
               <Link
                 href={item.link}

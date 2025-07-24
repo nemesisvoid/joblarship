@@ -85,7 +85,7 @@ const ContactForm = () => {
 
       setTimeout(() => {
         setSubmitSuccess(false);
-      }, 4000);
+      }, 5000);
     } catch (error) {
       console.error(error);
     } finally {

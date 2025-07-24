@@ -13,9 +13,11 @@ const FellowshipCard = ({ data }: { data: Opportunities }) => {
         <CardTitle className='text-gray-400 font-medium my-5 md:my-3'>{data.location}</CardTitle>
 
         <div className='flex items-center flex-wrap gap-4 mb-1'>
-          <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
-            <span> {data.employerName}</span>
-          </div>
+          {data.employerName && (
+            <div className='bg-blue-200 text-blue-600 px-4 py-1 rounded-xs'>
+              <span> {data.employerName}</span>
+            </div>
+          )}
           {data.deadline && (
             <div className='bg-purple-100 text-purple-600 flex items-center gap-3 px-3 py-1 rounded-xs'>
               <FaCalendarAlt size={20} />
