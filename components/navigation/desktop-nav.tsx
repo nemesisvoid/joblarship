@@ -20,7 +20,7 @@ const DesktopNav = () => {
   };
 
   return (
-    <nav className='hidden md:flex self-center'>
+    <nav className='hidden lg:flex self-center'>
       <ul className='flex items-center gap-12'>
         <li className={`text-xl hover:text-orange-400 ${pathname === '/' ? 'text-orange-400' : ''}`}>
           <Link href='/'>Home</Link>
@@ -34,11 +34,11 @@ const DesktopNav = () => {
           Jobs
           <ChevronDownIcon className={`${isDropdownOpen1 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
           <div
-            className={`${isDropdownOpen1 ? 'absolute' : 'hidden'} flex flex-col gap-3 w-[260%] top-7 -left-2 z-100 mb-10 bg-gray-100  rounded-xs`}>
+            className={`${isDropdownOpen1 ? 'absolute' : 'hidden'} flex flex-col gap-2 w-[290%] top-7 -left-2 z-100 mb-10 bg-gray-100  rounded-xs`}>
             {academicDropdownLinks.map((item, i) => (
               <Link
                 href={item.link}
-                className={`hover:bg-orange-100 inline-block hover:text-primary-100 p-3 w-full text-black  ${
+                className={`text-lg hover:bg-orange-100 inline-block hover:text-primary-100 p-3 w-full text-black  ${
                   pathname === item.link ? 'text-orange-400' : ''
                 }`}
                 key={i}>
@@ -57,12 +57,12 @@ const DesktopNav = () => {
           Scholarships
           <ChevronDownIcon className={`${isDropdownOpen2 ? 'rotate-180 text-orange-400' : ''} duration-300`} />
           <div
-            className={`${isDropdownOpen2 ? 'absolute' : 'hidden'} flex flex-col gap-3 w-[200%] top-7 -left-2 z-100 mb-10  bg-gray-100  rounded-xs`}>
+            className={`${isDropdownOpen2 ? 'absolute' : 'hidden'} flex flex-col gap-2 w-[150%] top-7 -left-2 z-100 mb-10  bg-gray-100  rounded-xs`}>
             {scholarshipDropdownLinks.map((item, i) => (
               <div key={i}>
                 <Link
                   href={`${item.link}`}
-                  className={`text-black hover:bg-orange-100 inline-block hover:text-primary-100 p-3 w-full  ${
+                  className={`text-lg text-black hover:bg-orange-100 inline-block hover:text-primary-100 p-3 w-full  ${
                     pathname === item.link ? 'text-orange-400' : ''
                   }`}>
                   {item.name}

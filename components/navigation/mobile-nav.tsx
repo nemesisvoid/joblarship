@@ -38,7 +38,7 @@ const MobileNav = () => {
   return (
     <>
       <button
-        className='md:hidden text-lg z-30'
+        className='lg:hidden text-lg z-30'
         onClick={handleMobileNavOpen}>
         {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>

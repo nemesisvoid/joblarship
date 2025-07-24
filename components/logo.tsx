@@ -10,8 +10,8 @@ const Logo = () => {
         <Image
           src={'/logo.png'}
           alt='joblarhsip logo'
-          width={110}
-          height={50}
+          width={95}
+          height={10}
         />
       </div>
     </Link>
